@@ -11,19 +11,17 @@
       font-family: sans-serif;
     }
 
-    body {
-  background-color: rgba(80, 80, 80, 0.3);   /* sanftes Grau mit Transparenz */
-  background-image: url('bg1.jpg');         /* wird von JS gewechselt */
-  background-size: contain;                 /* ganzes Bild anzeigen */
-  background-repeat: no-repeat;
+   body {
+  background-image: url('bg1.jpg');
+  background-size: cover; /* Bild füllt Bildschirm, auch wenn was abgeschnitten wird */
   background-position: center;
+  background-repeat: no-repeat;
   transition: background-image 1s ease-in-out;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
     .overlay {
       background-color: rgba(0, 0, 0, 0.6);
       color: #fff;
