@@ -40,3 +40,39 @@
 
     audio {
       width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>🎧 zu zweit</h1>
+    <audio controls>
+      <source src="projekt1.wav" type="audio/wav">
+      Dein Browser unterstützt den Audio-Player nicht.
+    </audio>
+  </div>
+
+  <script>
+    const images = [
+      'bg1v2.jpg',
+      'bg2v2.jpg',
+      'bg3v2.jpg',
+      'bg4v2.jpg',
+      'bg5v2.jpg',
+      'bg6v2.jpg',
+      'bg7v2.jpg'
+    ];
+
+    let index = 0;
+
+    function changeBackground() {
+      document.body.style.backgroundImage = `url('${images[index]}?v=${Date.now()}')`;
+      index = (index + 1) % images.length;
+    }
+
+    // Starte sofort und dann alle 6 Sekunden wechseln
+    changeBackground();
+    setInterval(changeBackground, 6000);
+  </script>
+</body>
+</html>
