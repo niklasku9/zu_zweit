@@ -12,15 +12,17 @@
     }
 
     body {
-      background: url('hintergrund.jpeg') no-repeat center center fixed;
       background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .overlay {
-      background-color: rgba(0, 0, 0, 0.6); /* halbtransparentes Schwarz */
+      background-color: rgba(0, 0, 0, 0.6);
       color: #fff;
       padding: 40px;
       border-radius: 20px;
@@ -47,5 +49,29 @@
       Dein Browser unterstützt den Audio-Player nicht.
     </audio>
   </div>
+
+  <script>
+    const images = [
+  'bg1.jpg',
+  'bg2.jpg',
+  'bg3.jpg',
+  'bg4.jpg',
+  'bg5.jpg',
+  'bg6.jpg',
+  'bg7.jpg',
+  'bg8.jpg'
+];
+
+    let index = 0;
+
+    function changeBackground() {
+      document.body.style.backgroundImage = `url('${images[index]}')`;
+      index = (index + 1) % images.length;
+    }
+
+    // Starte sofort und dann alle 6 Sekunden
+    changeBackground();
+    setInterval(changeBackground, 6000);
+  </script>
 </body>
 </html>
