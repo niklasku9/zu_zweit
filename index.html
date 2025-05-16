@@ -13,12 +13,16 @@
       overflow: hidden;
     }
 
+    :root {
+      --vh: 100vh;
+    }
+
     .background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
-      height: 100vh;
+      height: calc(var(--vh, 100vh));
       z-index: -1;
       background-size: cover;
       background-position: center;
@@ -46,7 +50,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height: calc(var(--vh, 100vh));
       padding: 20px;
       box-sizing: border-box;
     }
@@ -100,6 +104,17 @@
     let index = 1;
     let active = 1;
 
+    function setRealViewportHeight() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh * 100}px`);
+    }
+
+    // Initial setzen
+    setRealViewportHeight();
+
+    // Bei Resize (z. B. Bildschirm drehen) erneut setzen
+    window.addEventListener('resize', setRealViewportHeight);
+
     function changeBackground() {
       const nextImage = images[index];
       const bg1 = document.getElementById("bg1");
@@ -120,7 +135,7 @@
       index = (index + 1) % images.length;
     }
 
-    // Initial sanft einblenden
+    // Sanft einblenden beim Laden
     window.onload = () => {
       setTimeout(() => {
         document.getElementById("bg1").classList.add("active");
