@@ -46,6 +46,21 @@
       box-sizing: border-box;
     }
 
+    .poem {
+      margin-top: 30px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 15px;
+      display: none;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .poem.visible {
+      display: block;
+      opacity: 1;
+    }
+
     body {
       display: flex;
       justify-content: center;
@@ -53,6 +68,7 @@
       height: calc(var(--vh, 100vh));
       padding: 20px;
       box-sizing: border-box;
+      flex-direction: column;
     }
 
     h1 {
@@ -83,11 +99,22 @@
   <div id="bg2" class="background"></div>
 
   <div class="overlay">
-    <h1>🎧 zu zweit</h1>
-    <audio controls>
+    <h1>📖 zu zweit</h1>
+    <audio controls id="audioplayer">
       <source src="projekt1kopie.wav" type="audio/wav">
       Dein Browser unterstützt den Audio-Player nicht.
     </audio>
+    <div id="poem" class="poem">
+      <strong>Zu Zweit</strong><br><br>
+      Selbst wenn die Welt am Boden liegt,<br>
+      die Wände nicht mehr wackeln,<br>
+      sollt ihr beide am Ende stehen,<br>
+      deine Hand warm in seiner Jacke.<br><br>
+      Euer Blick ganz fest nach vorn gezurrt,<br>
+      sodass alle Welt nur weiß,<br>
+      auch wenn alles mal zu Ende scheint,<br>
+      ihr beide seid zu zweit.
+    </div>
   </div>
 
   <script>
@@ -109,10 +136,7 @@
       document.documentElement.style.setProperty('--vh', `${vh * 100}px`);
     }
 
-    // Initial setzen
     setRealViewportHeight();
-
-    // Bei Resize (z. B. Bildschirm drehen) erneut setzen
     window.addEventListener('resize', setRealViewportHeight);
 
     function changeBackground() {
@@ -135,7 +159,6 @@
       index = (index + 1) % images.length;
     }
 
-    // Sanft einblenden beim Laden
     window.onload = () => {
       setTimeout(() => {
         document.getElementById("bg1").classList.add("active");
@@ -143,6 +166,15 @@
     };
 
     setInterval(changeBackground, 6000);
+
+    const audio = document.getElementById('audioplayer');
+    const poem = document.getElementById('poem');
+
+    audio.addEventListener('play', () => {
+      setTimeout(() => {
+        poem.classList.add('visible');
+      }, 20000); // 20 Sekunden
+    });
   </script>
 </body>
 </html>
