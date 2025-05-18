@@ -46,6 +46,13 @@
       box-sizing: border-box;
     }
 
+    .player-wrapper {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
     .poem {
       margin-top: 30px;
       background-color: rgba(0, 0, 0, 0.6);
@@ -100,10 +107,12 @@
 
   <div class="overlay">
     <h1>📖 zu zweit</h1>
-    <audio controls id="audioplayer">
-      <source src="projekt1kopie.wav" type="audio/wav">
-      Dein Browser unterstützt den Audio-Player nicht.
-    </audio>
+    <div class="player-wrapper">
+      <audio controls id="audioplayer">
+        <source src="projekt1kopie.wav" type="audio/wav">
+        Dein Browser unterstützt den Audio-Player nicht.
+      </audio>
+    </div>
     <div id="poem" class="poem">
       <strong>Zu Zweit</strong><br><br>
       Selbst wenn die Welt am Boden liegt,<br>
