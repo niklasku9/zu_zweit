@@ -46,26 +46,20 @@
       box-sizing: border-box;
     }
 
-    .player-wrapper {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-
     .poem {
       margin-top: 30px;
-      background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 15px;
+      background-color: transparent;
       opacity: 0;
-      transition: opacity 4s ease-in-out, visibility 0s linear 4s;
+      transition: background-color 0.3s ease-in-out 3.7s, opacity 4s ease-in-out;
       visibility: hidden;
     }
 
     .poem.visible {
       opacity: 1;
       visibility: visible;
+      background-color: rgba(0, 0, 0, 0.6);
     }
 
     body {
@@ -107,12 +101,10 @@
 
   <div class="overlay">
     <h1>📖 zu zweit</h1>
-    <div class="player-wrapper">
-      <audio controls id="audioplayer">
-        <source src="projekt1kopie.wav" type="audio/wav">
-        Dein Browser unterstützt den Audio-Player nicht.
-      </audio>
-    </div>
+    <audio controls id="audioplayer">
+      <source src="projekt1kopie.wav" type="audio/wav">
+      Dein Browser unterstützt den Audio-Player nicht.
+    </audio>
     <div id="poem" class="poem">
       <strong>Zu Zweit</strong><br><br>
       Selbst wenn die Welt am Boden liegt,<br>
